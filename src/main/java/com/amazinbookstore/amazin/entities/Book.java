@@ -1,12 +1,10 @@
 package com.amazinbookstore.amazin.entities;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "books")
@@ -30,12 +28,15 @@ public class Book {
     @Column(nullable = false, length = 10)
     private Double price;
 
+    @Column(nullable = true, length = 50)
+    private String category;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false, updatable = false)
     private User user;
 
-    @ManyToMany(mappedBy = "books")
-    private Collection<Cart> carts;
+    @OneToMany(mappedBy = "book")
+    private Set<Cart> carts;
 
     @ManyToMany(mappedBy = "books")
     @JsonIgnore
@@ -57,11 +58,11 @@ public class Book {
         this.user = user;
     }
 
-    public Collection<Cart> getCarts() {
+    public Set<Cart> getCarts() {
         return carts;
     }
 
-    public void setCarts(Collection<Cart> carts) {
+    public void setCarts(Set<Cart> carts) {
         this.carts = carts;
     }
 
@@ -103,5 +104,13 @@ public class Book {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
