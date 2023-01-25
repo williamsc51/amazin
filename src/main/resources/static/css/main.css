@@ -1,0 +1,36 @@
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    margin-top: 15px;
+}
+
+.flex-item {
+    flex: 0 0 auto;
+    align-self: auto;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    width: 210px;
+    height: 279px;
+    text-align: center;
+    position: relative;
+}
+
+.add-to-cart {
+    position: absolute;
+    left: 180px;
+    bottom: 10px;
+    border: none;
+    background-color: #ffffff;
+}
+
+.cart-items{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
