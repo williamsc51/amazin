@@ -28,21 +28,20 @@ public class SpringSecurityConfig{
                 .csrf()
                 .disable()
                 .httpBasic()
+                .authenticationEntryPoint(new BasicAuthenticationEntryPointPopupDisable())
                 .and()
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/cart").authenticated()
-                        .requestMatchers("/api/v1/carts").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/users", "/api/v1/carts").permitAll()
                         .requestMatchers("/api/v1/**").authenticated()
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/", "/user/register").permitAll()
+                        .requestMatchers("/", "/user/register", "/login", "/logout", "/error").permitAll()
+                )
+                .formLogin(form -> form
+                        .loginPage("/login")
                 )
                 .logout(logout -> logout
                         .logoutSuccessUrl("/")
-                )
-                .formLogin(form -> form
-                        .loginPage("/user/login")
-                        .permitAll()
                 );
 
         return http.build();
