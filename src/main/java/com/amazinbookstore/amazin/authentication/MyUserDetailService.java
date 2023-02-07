@@ -26,7 +26,8 @@ public class MyUserDetailService implements UserDetailsService {
         UserDetails user = User.builder()
                 .username(optionalUser.get().getEmail())
                 .password(optionalUser.get().getPassword())
-                .roles("ADMIN")
+                .authorities(optionalUser.get().getId().toString())
+                .roles("USER")
                 .build();
 
         if (user.getUsername().equals(username)) {
