@@ -29,11 +29,20 @@ public class HomeController {
 
     @GetMapping("/")
     public String getBooks(Model model){
-        Iterable<Book> bookList = bookRepository.findAll();
+        Iterable<Book> bookList = bookRepository.findFirst5ByOrderByTitleDesc();
 
         model.addAttribute("books", bookList);
 
         return "index";
+    }
+
+    @GetMapping("/catalog")
+    public String getAllBooks(Model model){
+        Iterable<Book> bookList = bookRepository.findAll();
+
+        model.addAttribute("books", bookList);
+
+        return "/catalog";
     }
 
     @GetMapping("/cart")
@@ -44,10 +53,12 @@ public class HomeController {
 
             if (user.isPresent()){
                 List<CartDto> cartItems = cartService.getAllCartByUserId(user.get().getId());
+                double cartTotal = cartService.cartTotal(cartItems);
 
                 if (cartItems.size() > 0){
                     model.addAttribute("hasBooks", true);
                     model.addAttribute("cartItems", cartItems);
+                    model.addAttribute("cartTotal", cartTotal);
                 }else{
                     model.addAttribute("hasBooks", false);
                 }

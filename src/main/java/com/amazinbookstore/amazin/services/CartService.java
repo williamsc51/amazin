@@ -9,4 +9,6 @@ import java.util.List;
 public interface CartService {
     @Transactional
     public List<CartDto> getAllCartByUserId(Long userId);
+
+    double cartTotal(List<CartDto> cartDto);
 }

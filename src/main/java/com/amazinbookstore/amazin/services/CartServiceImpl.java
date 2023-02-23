@@ -37,4 +37,16 @@ public class CartServiceImpl implements CartService{
 
         return Collections.emptyList();
     }
+
+    @Override
+    public double cartTotal(List<CartDto> cartDto){
+
+        double total = 0.0;
+
+        for(var item : cartDto){
+            total = total + item.getBookDto().getPrice();
+        }
+
+        return total;
+    }
 }

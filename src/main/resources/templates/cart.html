@@ -33,6 +33,7 @@
             </div>
             <hr>
         </th:block>
+        <p style="float:right;font-size:20px">Cart total: <span th:text="${cartTotal}"></span></p>
     </div>
 
     <div th:if="${hasBooks} == false">
@@ -40,7 +41,7 @@
     </div>
 
 
-    <div id="paypal-button-container"></div>
+    <div id="paypal-button-container" class="paypal-button"></div>
     <script>
         paypal.Buttons({
           // Sets up the transaction when a payment button is clicked
