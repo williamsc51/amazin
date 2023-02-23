@@ -3,7 +3,6 @@ function addToCart(bookId,userId){
             console.log(cookie);
             console.log(userId);
             console.log(bookId);
-            console
 }
 
 // function createUserCart(userId){

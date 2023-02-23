@@ -43,7 +43,7 @@
 
     <div class="flex-container">
         <div class="flex-item" th:each="book : ${books}">
-            <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+            <img alt="Book Cover" src="https://images.bonanzastatic.com/afu/images/204a/0ca5/5efb_8979090885/__57.png" width="140px" height="140px"/>
             <h5 th:text="${book.title}"></h5>
             <h6 th:text="${book.author}"></h6>
             <p>ISBN: <span th:text="${book.isbn}"></span></p>
