@@ -35,7 +35,7 @@ public class SpringSecurityConfig{
                         .requestMatchers(HttpMethod.POST, "/api/v1/users", "/api/v1/carts").permitAll()
                         .requestMatchers("/api/v1/**").authenticated()
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/", "/user/register", "/login", "/logout", "/error").permitAll()
+                        .requestMatchers("/", "/register", "/login", "/logout", "/error", "/catalog").permitAll()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
