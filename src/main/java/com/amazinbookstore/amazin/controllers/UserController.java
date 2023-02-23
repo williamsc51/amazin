@@ -11,8 +11,8 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/user/register")
+    @GetMapping("/register")
     private String userRegistrationForm() {
-        return "user/register";
+        return "register";
     }
 }
